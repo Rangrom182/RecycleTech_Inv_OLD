@@ -1,16 +1,20 @@
 from django.shortcuts import render
 import pandas as pd 
+import pandas_highcharts as pdhigh
 from django.contrib.auth.decorators import login_required
 from django_pandas.io import read_frame
 from Inventory.models import Desktop, Laptop, Harddrive, Printer, Item
 import json
+from django_pandas.io import read_frame
 from django.http import JsonResponse
 
 # Create your views here.
 @login_required
 def dash_index(request):
-    df = pd.read_csv("dashboard/data/car_sales.csv")
-    rs = df.groupby("Engine size")["Sales in thousands"].agg("sum")
+    qs = Desktop.objects.all()
+    df = read_frame(qs, fieldnames=['Item_Name', 'Transferred_from_Business_Name'])
+    df['Item_Name'] = df['county'].map(df['county'].value_counts())
+    rs = df.groupby("Transferred_from_Business_Name")["Item_Name"].agg("sum")
     categories = list(rs.index)
     values = list(rs.values)
 
@@ -21,5 +25,7 @@ def dash_index(request):
 
     context = {"categories": categories, 'values': values, 'table_data':table_content}
     return render(request, 'dash/dash_index.html', context=context)
+
+
 
 

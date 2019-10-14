@@ -139,10 +139,10 @@
                     <div class="border shadow" id="container" style="margin: 0 auto"></div>
                 
                     <!-- Table data -->
-                    <h2 class="pt-4">Section Details</h2>
-                    <p class="text-danger">This table will be upated by Django objects, hence leaving it as it is.</p>
-                    <div class="table-responsive">
-                        {{table_data|safe}}
+                    <div id="my-chart"></div>
+                        <script type="text/javascript">
+                            new Highcharts.Chart({{ chart| safe}});
+                        </script>
                     </div>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                     }
                 },
                 series: [{
-                    name: 'Engine Capacity',
+                    name: 'Business Name',
                     data: _values
 
                 }]
@@ -208,6 +208,11 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
+
+
+
+
+
     </body>
 
 {% endblock  %}
