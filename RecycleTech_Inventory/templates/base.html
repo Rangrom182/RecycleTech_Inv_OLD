@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{% load static %}
+{% load staticfiles %}
+<head>
+    <title>
+        {% block title %}  {% endblock %}
+    </title>
+    <link rel="shortcut icon" type="image/png" href="{% static '/images/favicon.ico' %}" />
+</head>
+
+<link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<body class="Darker-body">
+    <nav class="navbar pl-5 navbar-expand navbar-dark bg-dark shadow">
+        <img class="logo-recycletech" src="/static/images/Single_Logo.png" alt="Logo" />
+        <a class="navbar-brand" href="../"> RecycleTech Inventory System</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02"
+            aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'dash_index' %}"> Dashboard<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/inventory"> Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Admin</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-md-0">
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <a class="nav-item nav-link"> Welcome, {{ user.first_name }}!</a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}"> Profile</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}"> Logout</a>
+                    {% else %}
+                        <a class="nav-item nav-link" href="{% url 'login' %}" > Login</a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}"> Register</a>
+                    {% endif %}
+                </div>
+                <input class="form-control form-control-leftmarg" type="text" placeholder="Search">
+            </form>
+        </div>
+    </nav>
+
+    <br>
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+            <a class="messagelist">
+                <h4 class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </h4>
+            </a>
+            {% endfor %}
+        {% endif %}
+    </div>
+        <div class="container">
+            {% block content %}
+            
+            {% block page_content %}
+            {% endblock %}
+            
+            {% endblock %}
+        </div>
+
+</body>
+
+</html>

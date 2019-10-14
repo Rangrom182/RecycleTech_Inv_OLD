@@ -1,0 +1,50 @@
+{% extends 'index_Table_Navbar.html' %}
+
+{% block page_content %}
+  <div style="padding: 13px;">
+    <h4 >Currently Viewing: {{ header }}</h4>
+  </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+
+          <th>Serial</th>
+          <th>Size</th>
+          <th>Pulled From</th>
+          <th>Computer Serial</th>
+          <th>Business Name</th>
+          <th>DOD Wiped</th>
+          <th>Disposed</th>
+          <th>Reused</th>
+    
+        </tr>
+      </thead>
+    
+      <tbody>
+    
+        {% for item in items %}
+    
+        <tr>
+
+          <td>{{ item.Serial }}</td>
+          <td>{{ Item.Size }}</td>
+          <td>{{ item.Pulled_From }}</td>
+          <td>{{ item.Computer_Serial }}</td>
+          <td>{{ item.Buesinss_Name }}</td>
+          <td>{{ item.DOD_Wiped }}</td>
+          <td>{{ item.Disposed }}</td>
+          <td>{{ item.Reused }}</td>
+
+          <td>
+            <a href="{% url 'delete_hard_drives' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
+            <a href="{% url 'edit_hard_drives' item.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
+          </td>
+
+        </tr>
+    
+        {% endfor %}
+    
+      </tbody>
+    </table>
+
+{% endblock %}

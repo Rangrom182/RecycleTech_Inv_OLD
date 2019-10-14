@@ -1,0 +1,76 @@
+{% extends 'index_Table_Navbar.html' %}
+
+{% block page_content %}
+  <div style="padding: 13px;">
+    <h4 >Currently Viewing: {{ header }}</h4>
+  </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+
+          <th>Model</th>
+          <th>Serial</th>
+          <th>Bus. Name</th>
+          <th>HDD Disposed</th>
+          <th>HDD Wipe</th>
+          <th>Refurb Status</th>
+          <th>SSD Size</th>
+          <th>SSD Price</th>
+          <th>Ram QTY</th>
+          <th>Processor</th>
+          <th>Price</th>
+          <th>Sold To</th>
+          <th>Paid</th>
+          <th>Invoice#</th>
+    
+        </tr>
+      </thead>
+    
+      <tbody>
+    
+        {% for item in items %}
+    
+        <tr>
+
+          <td>{{ item.Item_Name }}</td>
+          <td>{{ Item.Serial }}</td>
+          <td>{{ item.Transfered_from_Business_Name }}</td>
+          <td>{{ item.HDD_Disposed }}</td>
+          <td>{{ item.HDD_DOD_Wiped }}</td>
+          <td>{{ item.Refurbish_Status }}</td>
+          <td>{{ item.SSD_Size }}</td>
+          <td>{{ item.SSD_Replacement_Price }}</td>
+          <td>{{ item.Ram_QTY }}</td>
+          <td>{{ item.Processor }}</td>
+          <td>{{ item.Price }}</td>
+          <td>{{ item.Sold_To }}</td>
+          <td>{{ item.Paid }}</td>
+          <td>{{ item.Invoice_Num }}</td>
+
+          {% if header == "Desktops" %}
+          <td>
+            <a href="{% url 'delete_desktop' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
+            <a href="{% url 'edit_desktop' item.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
+          </td>
+          {% elif header == "Laptops" %}
+          <td>
+            <a href="{% url 'delete_laptop' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
+            <a href="{% url 'edit_laptop' item.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
+          </td>
+          {% else %}
+          <td>
+            <a href="{% url 'delete_printer' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
+            <a href="{% url 'edit_printer' item.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
+          </td>
+          {% endif %}
+    
+        </tr>
+    
+        {% endfor %}
+    
+    
+    
+      </tbody>
+    </table>
+
+{% endblock %}

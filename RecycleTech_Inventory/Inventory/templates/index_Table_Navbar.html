@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} RecycleTech-Inventory {% endblock %}
+
+{% block content %}
+
+  <div class="add_buttons">
+
+    <div class="button-group">
+      <a href="{% url 'display_laptops' %}" class="btn btn-info btn-md btn-trim" role="button"> Laptops</a>
+      <a href="{% url 'add_laptop' %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+      <a href="{% url 'display_desktops' %}" class="btn btn-info btn-md btn-trim" role="button"> Desktops</a>
+      <a href="{% url 'add_desktop' %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+      <a href="{% url 'display_printers' %}" class="btn btn-info btn-md btn-trim" role="button"> Printers</a>
+      <a href="{% url 'add_printer' %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+      <a href="{% url 'display_hard_drives' %}" class="btn btn-info btn-md btn-trim" role="button"> Hard Drives</a>
+      <a href="{% url 'add_hard_drives' %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+      <a href="{% url 'index_P_D_L' %}" class="btn btn-warning btn-sm btn-pad" role="button"> Clear Tables</a>
+    </div>
+
+  </div> 
+
+    {% block page_content %}
+    
+    {% endblock %}
+
+
+{% endblock  %}
+
