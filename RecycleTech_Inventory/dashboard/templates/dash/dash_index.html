@@ -111,16 +111,16 @@
                     </div>
                 </nav>
 
-                <div class="col-md-10">
-                    <nav class="navbar">
+                <div class="col-md-10 ">
+                    <nav class="navbar pb-md-5">
                         <form class="form-inline my-2 my-md-0">
                             <h1 class="h2 pr-3 align-right">Dashboard</h1>
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group mr-2">
-                                    <button type="button" class="btn btn-sm btn-info btn-md btn-trim pr-3">Share</button>
-                                    <button type="button" class="btn btn-sm btn-info btn-md btn-trim">Export</button>
+                                    <button type="button" class="btn btn-sm btn-info btn-md btn-trim pr-3 shadow">Share</button>
+                                    <button type="button" class="btn btn-sm btn-info btn-md btn-trim shadow">Export</button>
                                 </div>
-                                <button type="button" class="btn btn-sm btn-info btn-md btn-trim dropdown-toggle">
+                                <button type="button" class="btn btn-sm btn-info btn-md btn-trim dropdown-toggle shadow">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                         class="feather feather-calendar">
@@ -136,14 +136,38 @@
                 
                     </nav>
                     <!-- Highcharts display -->
-                    <div class="border shadow" id="container" style="margin: 0 auto"></div>
-                
-                    <!-- Table data -->
-                    <div id="my-chart"></div>
-                        <script type="text/javascript">
-                            new Highcharts.Chart({{ chart| safe}});
-                        </script>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="card" style="width: 16rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Desktops in Inventory</h5>
+                                        <h1 class="display-1">{{ num_desktops }}</h1>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="card" style="width: 16rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Desktops in Inventory</h5>
+                                        <h1 class="display-1">{{ num_desktops }}</h1>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="card" style="width: 16rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Desktops in Inventory</h5>
+                                        <h1 class="display-1">{{ num_desktops }}</h1>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
