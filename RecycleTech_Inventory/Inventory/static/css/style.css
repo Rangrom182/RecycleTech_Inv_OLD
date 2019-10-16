@@ -101,3 +101,70 @@ img.svg-icon {
   vertical-align: bottom;
   width: 10%;
 }
+
+.overflow-hidden {
+  overflow: hidden!important;
+}
+
+@media (min-width: 576px) { 
+div.card.card-new {
+
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+}
+
+.bg-card {
+  background-size: contain;
+  background-position: right;
+  border-top-right-radius: .375rem;
+  border-bottom-right-radius: .375rem;
+}
+.bg-holder {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  will-change: transform,opacity,filter;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.fs--1 {
+  font-size: .83333rem;
+}
+
+svg:not(:root).svg-inline--fa {
+  overflow: visible;
+}
+
+.svg-inline--fa.fa-w-8 {
+  width: 0.5em;
+}
+.ml-1, .mx-1 {
+  margin-left: .25rem!important;
+}
+
+.svg-inline--fa {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+
+svg {
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
