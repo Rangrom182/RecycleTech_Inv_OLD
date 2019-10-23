@@ -18,16 +18,31 @@ def dash_index(request):
     num_laptops = Laptop.objects.all().count()
     num_printers = Printer.objects.all().count()
     num_harddrives = Harddrive.objects.all().count()
+    num_customers = Desktop.objects.values_list('Transferred_from_Business_Name', flat=True).distinct().order_by().count()
+   
     
     context = {
         'num_desktops': num_desktops,
         'num_laptops': num_laptops,
         'num_printers': num_printers,
         'num_harddrives': num_harddrives,
+        'num_customers': num_customers
     }
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'dash/dash_index.html', context=context)
+
+
+# Create your views here.
+@login_required
+def customer_view(request):
+    customers = Desktop.objects.values_list('Transferred_from_Business_Name', flat=True).distinct().order_by()
+    context = {
+        'customers': customers,
+        'header': 'Customers'
+    }
+    return render(request, "dash/customers.html", context=context)
+
 
 
 

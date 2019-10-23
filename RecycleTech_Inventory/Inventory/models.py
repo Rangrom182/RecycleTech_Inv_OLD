@@ -1,20 +1,21 @@
 from django.db import models
+from djmoney.models.fields import MoneyField
 
 # Create your models here.
 class Item(models.Model): # Name of the table
     Item_Name                       = models.CharField(max_length=120, blank=False)
     Serial                          = models.CharField(max_length=120)
     Transferred_from_Business_Name  = models.CharField(max_length=120, default="Enter Business Name")
-    HDD_Disposed                    = models.CharField(max_length=20, default="None", choices=[('None', 'No'),('Yes Disposed', 'Yes'),('Not Disposed', 'No')])
-    HDD_DOD_Wiped                   = models.CharField(max_length=20, default="None", choices=[('None', 'No'),('Yes Wiped', 'Yes'),('Not Wiped', 'No')])
+    HDD_Disposed                    = models.CharField(max_length=20, default="None", choices=[('None', 'No'),('Yes', 'Yes Disposed'),('No', 'Not Disposed')])
+    HDD_DOD_Wiped                   = models.CharField(max_length=20, default="None", choices=[('None', 'No'),('Yes', 'Yes Wiped'),('No', 'Not Wiped')])
     Refurbish_Status                = models.CharField(max_length=20, default="None", choices=[('None', 'Status'),('Not Finished', 'Not Complete'),('Partially Done', 'Partial Completion'), ('Finished', 'Complete')])
     SSD_Size                        = models.CharField(max_length=120, default="SSD Size")
-    SSD_Replacement_Price           = models.DecimalField(max_digits=1000, decimal_places=2)
+    SSD_Replacement_Price           = MoneyField(max_digits=14, decimal_places=2, default_currency='USD', blank=True, null=True)
     Ram_QTY                         = models.CharField(choices=[('None', 'No Ram installed'), ('2GB', '2GB installed'), ('4GB', '4GB Installed'), ('8GB', '8GB Installed'), ('16GB', '16GB Installed')], max_length=120, default="None")
     Processor                       = models.CharField(max_length=10, default="Type", choices=[('Type','Processor Type'),('Core 2 Duo', "Core 2 Duo"), ('Core i3', 'Core i3'), ('Core i5', 'Core i5'), ('Core i7', 'Core i7')])
-    Price                           = models.DecimalField(max_digits=1000, decimal_places=2, null=True, blank=True)
+    Price                           = MoneyField(max_digits=14, decimal_places=2, default_currency='USD', blank=True, null=True)
     Sold_To                         = models.CharField(max_length=120, null=True, blank=True)
-    Paid                            = models.CharField(max_length=120, default="None", choices=[('None', 'No'),('Yes Paid', 'Yes'),('Not Paid', 'No')])
+    Paid                            = models.CharField(max_length=120, default="None", choices=[('None', 'No'),('Yes', 'Yes Paid'),('No', 'Not Paid')])
     Invoice_Num                     = models.IntegerField(null=True, blank=True)
 
     class Meta:

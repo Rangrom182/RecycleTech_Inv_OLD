@@ -9,7 +9,7 @@
         <tr>
 
           <th>Model</th>
-          <th>Serial</th>
+          <th>Serial #</th>
           <th>Bus. Name</th>
           <th>HDD Disposed</th>
           <th>HDD Wipe</th>
@@ -33,7 +33,7 @@
         <tr>
 
           <td>{{ item.Item_Name }}</td>
-          <td>{{ item.Serial }}</td>
+          <td style="max-width:100px;"><div style="overflow:scroll; width:75%">{{ item.Serial }}</div></td>
           <td>{{ item.Transferred_from_Business_Name }}</td>
           <td>{{ item.HDD_Disposed }}</td>
           <td>{{ item.HDD_DOD_Wiped }}</td>
@@ -49,17 +49,17 @@
 
           {% if header == "Desktops" %}
           <td>
-            <a href="{% url 'delete_desktop' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
+            <a onclick="return confirm('Are you sure you want to delete this item?')" href="{% url 'delete_desktop' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
             <a href="{% url 'edit_desktop' item.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
           </td>
           {% elif header == "Laptops" %}
           <td>
-            <a href="{% url 'delete_laptop' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
+            <a onclick="return confirm('Are you sure you want to delete this item?')" href="{% url 'delete_laptop' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
             <a href="{% url 'edit_laptop' item.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
           </td>
           {% else %}
           <td>
-            <a href="{% url 'delete_printer' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
+            <a onclick="return confirm('Are you sure you want to delete this item?')" href="{% url 'delete_printer' item.pk %}" class="btn btn-danger btn-sm" role="button"> X</a>
             <a href="{% url 'edit_printer' item.pk %}" class="btn btn-warning btn-sm" role="button"> Edit</a>
           </td>
           {% endif %}

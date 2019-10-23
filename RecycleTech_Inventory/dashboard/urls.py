@@ -6,4 +6,5 @@ from .forms import *
 
 urlpatterns = [
     path('', dash_views.dash_index, name='dash_index'),
+    path('customers/', dash_views.customer_view, name="customer_view")
 ]
