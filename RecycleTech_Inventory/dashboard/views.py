@@ -3,7 +3,7 @@ import pandas as pd
 import pandas_highcharts as pdhigh
 from django.contrib.auth.decorators import login_required
 from django_pandas.io import read_frame
-from Inventory.models import Desktop, Laptop, Harddrive, Printer
+from Inventory.models import Desktop, Laptop, Harddrive, Printer, Item
 import json
 from django_pandas.io import read_frame
 from django.http import JsonResponse
@@ -43,6 +43,14 @@ def customer_view(request):
     }
     return render(request, "dash/customers.html", context=context)
 
+
+# def customer_inventory(request, customer):
+#     cust_inventory = Item.objects.filter(Transferred_from_Business_Name=customer)
+#     context = {
+#         'customer_inv': cust_inventory,
+#         'header': customer
+#     }
+#     return render(request, 'customer_inventory.html', context)
 
 
 

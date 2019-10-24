@@ -4,6 +4,8 @@ from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib import messages
+from .tables import *
+import django_tables2 as tables
 
 # Create your views here.
 

@@ -50,3 +50,6 @@ class Harddrive(models.Model):
                'Disposed: {3}'.format(self.Serial, self.Size, self.Pulled_From, self.Disposed))
 
 
+
+
+
