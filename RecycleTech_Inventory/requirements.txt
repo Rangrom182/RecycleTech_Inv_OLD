@@ -3,7 +3,7 @@ django-crispy-forms==1.7.2
 django-import-export==1.2.0
 django-pandas==0.6.1
 pandas==0.25.1
-Pillow==6.2.0
+Pillow==9.3.0
 pandas-highcharts==0.5.2
 tables==3.6.1
 django-money==0.8.0
